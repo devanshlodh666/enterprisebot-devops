@@ -13,7 +13,7 @@ spec:
       labels:
         app: migrate
     spec:
-      restartPolicy: Always
+      restartPolicy: Never
       containers:
         - name: migrate
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -26,7 +26,6 @@ spec:
             - name: VERSION
               value: "2.0.0"
           securityContext:
-            runAsNonRoot: true
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
             capabilities:
